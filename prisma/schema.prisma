@@ -32,7 +32,7 @@ model Post {
   authorId Int
 
   comments Comment[]
-  tags TagOnPost[]
+  tags     TagOnPost[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -54,7 +54,7 @@ model Comment {
 }
 
 model Tag {
-  id Int @id @default(autoincrement())
+  id   Int    @id @default(autoincrement())
   name String @unique
 
   posts TagOnPost[]
@@ -63,13 +63,12 @@ model Tag {
   updatedAt DateTime @updatedAt
 }
 
-
 model TagOnPost {
-  tagId Int
+  tagId  Int
   postId Int
 
-  tag   Tag @relation(fields: [tagId], references: [id])
-  post  Post @relation(fields: [postId], references: [id])
+  tag  Tag  @relation(fields: [tagId], references: [id])
+  post Post @relation(fields: [postId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
