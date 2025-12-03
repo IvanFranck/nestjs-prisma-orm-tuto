@@ -20,10 +20,7 @@ export class PostsController {
 
   @Post()
   create(@Body() createPostDto: CreatePostDto) {
-    // Temporairement on hardcode l'authorId
-    // Dans la vidéo JWT, on utilisera l'auth
-    const authorId = 1;
-    return this.postsService.create(createPostDto, authorId);
+    return this.postsService.create(createPostDto, createPostDto.authorId);
   }
 
   @Get()
