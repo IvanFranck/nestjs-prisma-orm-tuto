@@ -16,7 +16,6 @@ export class UsersController {
     async findAllUsers(
         @Query('page', new ValidationPipe({ transform: true })) page?: number,
         @Query('limit', new ValidationPipe({ transform: true })) limit?: number
-
     ){
         return await this.userService.findAll({
             skip: page && limit ? (page - 1) * limit : 0,
